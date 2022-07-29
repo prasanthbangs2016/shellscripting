@@ -1,0 +1,32 @@
+which shell
+
+Unix
+====
+sh
+  it started of with unix os
+  it is core shell
+ksh : IBM, more of
+csh : cshell
+
+Linux
+======
+Bash : borne again shell
+       this is default in all linux machine
+       this is advanced feature to unix sh
+       will have features of sh,ksh and cshell
+
+#!/bin/bash
+#this is path of interpreter
+#script will execute using this path of interpreter
+#type bash #this tells path of command
+#type cat
+#shebang has to be at first line
+#only one shebang is possible for shell file.
+
+comments:
+#########
+any line is starts with "#" is called comments
+interpreter will not execute a line starts of "#"
+
+
+
