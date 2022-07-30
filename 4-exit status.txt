@@ -1,0 +1,16 @@
+0 -universal success
+1-22 is not successful / partial successful
+
+ls
+
+check exit status
+echo $?
+o/p: 0
+
+
+note : every linux command has exit status/code.(check man pages)
+
+
+exit values
+--------------
+

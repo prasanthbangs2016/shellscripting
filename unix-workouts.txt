@@ -1,0 +1,21 @@
+function square
+{
+sq=`expr $1 \* $1`
+#echo "The sum is $sq"
+}
+echo enter the number to square
+read num
+val=`square $num` --this kind of call copies the entire output from echo command from the function to val
+echo "$val"
+--
+
+
+
+function square
+{
+sq=`expr $1 \* $1`
+echo "Squared value is $sq"
+}
+echo "enter the number"
+read num
+square $num

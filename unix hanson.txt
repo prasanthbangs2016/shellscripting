@@ -1,0 +1,406 @@
+echo [options] [string, variables...]
+Displays text or variables value on screen.
+Options
+-n Do not output the trailing new line.
+-e Enable interpretation of the following backslash escaped characters in the strings:
+\a alert (bell)
+\b backspace
+\c suppress trailing new line
+\n new line
+\r carriage return
+\t horizontal tab
+\\ backslash
+
+For e.g. $ echo -e "An apple a day keeps away \a\t\tdoctor\n"
+
+------------------------------------------------------------- --
+vi ginfo
+#
+#
+# Script to print user information who currently login , current date & time
+#
+clear
+echo "Hello $USER"
+echo "Today is \c ";date
+echo "Number of user login : \c" ; who | wc -l
+echo "Calendar"
+cal
+exit 0
+
+----------------------
+
+$ cat > showfile
+#!/bin/sh
+#
+#Script to print file
+#
+if cat $1
+then
+echo -e "\n\nFile $1, found and successfully echoed"
+fi
+-------------------------------------
+
+cat > trmif
+#
+# Script to test rm command and exist status
+#
+if rm $1
+then
+echo "$1 file deleted"
+fi 
+
+-------------------------------------------
+
+test command or [ expr ] is used to see if an expression is true, and if it is true it return zero(0), otherwise returns nonzero for false.
+Syntax: 
+test expression OR [ expression ]
+
+
+
+$ cat > ispostive
+#!/bin/sh
+#
+# Script to see whether argument is positive
+#
+if test $1 -gt 0
+then
+echo "$1 number is positive"
+fi 
+
+---------------------------------------------------------
+
+$ vi isnump_n
+#!/bin/sh
+#
+# Script to see whether argument is positive or negative
+#
+if [ $# -eq 0 ]
+then
+echo "$0 : You must give/supply one integers"
+exit 1
+fi
+
+if test $1 -gt 0
+then
+echo "$1 number is positive"
+else
+echo "$1 number is negative"
+fi
+ 
+-----------------------------------------------
+
+if condition
+	then
+		if condition
+		then
+			.....
+			..
+			do this
+		else
+			....
+			..
+			do this
+		fi
+	else
+		...
+		.....
+		do this
+	fi
+
+
+--------------------------------------------------
+
+if condition
+           then
+                       condition is zero (true - 0)
+                       execute all commands up to elif statement
+           elif condition1            then
+                       condition1 is zero (true - 0)
+                       execute all commands up to elif statement  
+           elif condition2
+           then
+                       condition2 is zero (true - 0)
+                       execute all commands up to elif statement          
+           else
+                       None of the above condtion,condtion1,condtion2 are true (i.e. 
+                       all of the above nonzero or false)
+                       execute all commands up to fi
+           fi
+---------------------------------------------------
+
+$ cat > elf
+#
+#!/bin/sh
+# Script to test if..elif...else
+#
+if [ $1 -gt 0 ]; then
+  echo "$1 is positive"
+elif [ $1 -lt 0 ]
+then
+  echo "$1 is negative"
+elif [ $1 -eq 0 ]
+then
+  echo "$1 is zero"
+else
+  echo "Opps! $1 is not number, give number"
+fi
+-----------------------------------------------------
+
+$ cat > testfor
+for i in 1 2 3 4 5
+do
+echo "Welcome $i times"
+done
+
+------------------------------------------------
+
+$ cat > mtable
+#!/bin/sh
+#
+#Script to test for loop
+#
+#
+if [ $# -eq 0 ]
+then
+echo "Error - Number missing form command line argument"
+echo "Syntax : $0 number"
+echo "Use to print multiplication table for given number"
+exit 1
+fi
+n=$1
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+echo "$n * $i = `expr $i \* $n`"
+done
+
+-------------------------------
+
+$ cat > for2
+for ((  i = 0 ;  i <= 5;  i++  ))
+do
+  echo "Welcome $i times"
+done 
+
+
+----------------------------------------
+
+$ cat > for2
+for ((  i = 0 ;  i <= 5;  i++  ))
+do
+  echo "Welcome $i times"
+done 
+
+-----------------------------------------
+
+$ vi nestedfor.sh
+for (( i = 1; i <= 5; i++ ))      ### Outer for loop ###
+do
+
+    for (( j = 1 ; j <= 5; j++ )) ### Inner for loop ###
+    do
+          echo -n "$i "
+    done
+
+  echo "" #### print the new line ###
+
+done 
+-------------------------------------------------
+
+
+$ vi nestedfor.sh
+for (( i = 1; i <= 5; i++ ))      ### Outer for loop ###
+do
+
+    for (( j = 1 ; j <= 5; j++ )) ### Inner for loop ###
+    do
+          echo -n "$i "
+    done
+
+  echo "" #### print the new line ###
+
+done 
+
+------------------------------------------------------
+
+
+   case  $variable-name  in
+                pattern1)   command
+                                ...
+                                ..
+                                command;;
+                pattern2)   command
+                                ...
+                                ..
+                                command;;
+                patternN)   command
+                                ...
+                                ..
+                                command;;
+                *)             command
+                                ...
+                                ..
+                                command;;
+           esac
+--------------------------------------------------------------
+
+$ cat > car
+#
+# if no vehicle name is given
+# i.e. -z $1 is defined and it is NULL
+#
+# if no command line arg
+if [ -z $1 ]
+then
+  rental="*** Unknown vehicle ***"
+elif [ -n $1 ]
+then
+# otherwise make first arg as rental
+  rental=$1
+fi
+
+case $rental in
+   "car") echo "For $rental Rs.20 per k/m";;
+   "van") echo "For $rental Rs.10 per k/m";;
+   "jeep") echo "For $rental Rs.5 per k/m";;
+   "bicycle") echo "For $rental 20 paisa per k/m";;
+   *) echo "Sorry, I can not gat a $rental for you";;
+esac
+
+
+-----------------------------------------------------------------------
+
+string1 = string2 string1 is equal to string2 
+string1 != string2 string1 is NOT equal to string2 
+string1 string1 is NOT NULL or not defined  
+-n string1 string1 is NOT NULL and does exist 
+-z string1 string1 is NULL and does exist 
+
+
+-------------------------------------------------------------------------
+
+ while [ condition ]
+           do
+                 command1
+                 command2
+                 command3
+                 ..
+                 ....
+            done
+
+---------------------------------------------------------------------------
+
+$cat > nt1
+#!/bin/sh
+#
+#Script to test while statement
+#
+#
+if [ $# -eq 0 ]
+then
+   echo "Error - Number missing form command line argument"
+   echo "Syntax : $0 number"
+   echo " Use to print multiplication table for given number"
+exit 1
+fi
+n=$1
+i=1
+while [ $i -le 10 ]
+do
+  echo "$n * $i = `expr $i \* $n`"
+  i=`expr $i + 1`
+done 
+---------------------------------------------------------------------------
+$ cat > dsh1.sh
+#
+# Script to show debug of shell
+#
+		tot=`expr $1 + $2`
+		echo $tot 
+
+Press ctrl + d to save, and run it as
+$ chmod 755 dsh1.sh
+$ ./dsh1.sh 4 5
+9
+$ sh -x dsh1.sh 4 5
+#
+# Script to show debug of shell
+#
+tot=`expr $1 + $2`
+expr $1 + $2
+++ expr 4 + 5
++ tot=9
+echo $tot
++ echo 9
+9
+
+---------------------------------------
+
+
+   if [ $# -ne 3 ]
+    then
+	echo "$0: number1 number2 number3 are not given" >&2
+        exit 1    
+    fi
+    n1=$1
+    n2=$2
+    n3=$3
+    if [ $n1 -gt $n2  -a $n1 -gt $n3 ]
+    then
+	echo "$n1 is Bigest number"
+    elif [ $n2 -gt $n1  -a $n2 -gt $n3 ]         
+    then
+	echo "$n2 is Bigest number"
+    elif [ $n3 -gt $n1  -a $n3 -gt $n2 ]         
+    then
+        echo "$n3 is Bigest number"
+    elif [ $1 -eq $2  -a $1 -eq $3  -a $2 -eq $3 ]
+    then
+	echo "All the three numbers are equal"    
+    else
+        echo "I can not figure out which number is biger"    
+    fi    
+
+-------------------------------------
+
+
+ftp -n -v mpslx041.us.schp.com <<EOF
+user hcpjob compassdev1
+cd  /HCP_DW/IntTest/bin/d1
+append  /HCP_DW/IntTest/bin/d1/a b2
+quit
+EOF
+
+**************************
+
+ftp -n -v mpslx041.us.schp.com <<EOF
+user hcpjob compassdev1
+cd  /HCP_DW/IntTest/bin/d1
+put /HCP_DW/IntTest/bin/d1/a b2
+quit
+EOF
+***************************
+sftp hcpjob@mpslx041.us.schp.com <<EOF
+user hcpjob compassdev1
+cd  /HCP_DW/IntTest/bin/d1
+put /HCP_DW/IntTest/bin/d1/a b2
+quit
+EOF
+
+------------------------------------------------
+
+Field  Value  Description  
+minute  0-59  The exact minute that the command sequence executes  
+hour  0-23  The hour of the day that the command sequence executes  
+day  1-31  The day of the month that the command sequence executes  
+month  1-12  The month of the year that the command sequence executes  
+weekday  0-6  The day of the week that the command sequence executes (Sunday = 0, Monday = 1, Tuesday = 2, and so forth)  
+command  Special  The complete sequence of commands to execute. The command string must conform to Bourne shell syntax. Commands, executables (such as scripts), or combinations are acceptable.  
+
+
+crontab -a filename  Install filename as your crontab file. On many systems, this command is executed simply as crontab filename (i.e., without the  -a  option).  
+crontab -e  Edit your crontab file, or create one if it doesn't already exist.  
+crontab -l  Display your crontab file.  
+crontab -r  Remove your crontab file.  
+crontab -v  Display the last time you edited your crontab file. (This option is available on only a few systems.)  
+crontab -u user  Used in conjunction with other options, this option allows you to modify or view the crontab file of user. When available, only administrators can use this option.  
+

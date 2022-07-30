@@ -1,0 +1,112 @@
+#!/bin/sh
+echo "enter file name"
+read file
+if [-d $file];
+ then
+   echo "file is the directory"
+ elif [-f $file];
+   then 
+     if [-r $file -a -w $file -a -x $file ];
+       then 
+         echo "echo you have read,write,execute access in the file"
+     else
+        echo "this is the ordinary file"
+     fi
+  else
+       echo "this is neither file nor directory"
+fi
+
+-----------------
+#!/bin/sh
+echo "enter file name"
+read file
+if [-f $file]
+ then echo "this is file"
+else 
+ echo "not a file"
+fi
+--------------------
+
+#!/bin/sh
+echo "enter number"
+read n
+ if [ $n -ge 9 ] then  echo "you have entered $n and it is >9"
+ else   echo "you have entered $n and it is <9"
+fi 
+------------------------------
+
+#!/bin/sh
+echo "enter choice"
+read ch
+case "$ch" in 
+1) echo blue
+;;
+2) echo green
+;;
+---------------------------
+
+#!/bin/sh
+for var in 1 2
+ do 
+echo $var
+done
+-----------------------------
+
+#!/bin/sh
+num=0
+while [ $num -lt 5 ]
+do
+echo -n "$num"
+echo $'\n'
+ num=$(( $num + 1 ))
+ done
+--------------------------
+
+#!/bin/sh
+while [ $# -gt 0 ]
+do
+echo $*
+shift
+done
+-----------------------------
+#!/bin/sh
+
+for (( i=1; $i <= 10; i++ ))
+do
+	echo $i
+done
+
+------------------------
+
+#!/bin/sh
+function square () {
+sq=`expr $1 \* $1`
+echo "Squared value is $sq"
+}
+echo "enter the number"
+read num
+square $num
+
+-------------------
+
+
+#!/bin/sh
+
+sumcalc ()
+{
+	sum=$[$1 + $2]
+}
+
+echo "Enter the first number:"
+read num1
+echo "Enter the second number:"
+read num2
+
+sumcalc $num1 $num2
+
+echo "Output from function sumcalc: $sum"
+
+--------------------------
+
+
+
