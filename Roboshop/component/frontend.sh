@@ -15,5 +15,5 @@ STAT $?
 
 HEAD "start nginx"
 systemctl start nginx &>>/tmp/roboshop.log
-systemctl enable nginx
+systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
