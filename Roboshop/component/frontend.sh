@@ -29,7 +29,7 @@ STAT $?
 HEAD "Update nginx configuration\t\t"
 mv /usr/share/nginx/html/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
 
-HEAD "start nginx\t\t\t\t"
+HEAD "start nginx\t\t"
 systemctl restart nginx &>>/tmp/roboshop.log
 systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
