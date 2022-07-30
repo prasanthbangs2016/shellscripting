@@ -8,7 +8,7 @@ STAT() {
     echo -e "\e[1;32m done\e[0m"
   else
     echo -e "\e[1;31m fail\e[0m"
-    echo -e "\t check the log file for more details... Log file: /tmp/roboshop.log\e[0m"
+    echo -e "\t \e[1;33m check the log file for more details... Log file: /tmp/roboshop.log\e[0m"
     exit 1
   fi
     
