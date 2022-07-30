@@ -28,4 +28,6 @@ STAT $?
 
 HEAD "Extract frontend applicatio code\t"
 unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>/tmp/roboshop.log
+mv /usr/share/nginx/html/frontend-main/* /usr/share/nginx/html &>>/tmp/roboshop.log
+mv /usr/share/nginx/html/static/* /usr/share/nginx/html/ &>>/tmp/roboshop.log
 STAT $?
