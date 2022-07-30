@@ -6,14 +6,14 @@ source component/common.sh
 rm -rf /tmp/roboshop.log
 
 #docker approach
-HEAD "Installing Nginx\t"
+HEAD "Installing Nginx\t\t"
 yum install nginx -y &>>/tmp/roboshop.log
 #script will fail if run as below
 #yum install Nginx -y &>>/tmp/roboshop.log
 
 STAT $?
 
-HEAD "start nginx\t"
+HEAD "start nginx\t\t"
 systemctl start nginx &>>/tmp/roboshop.log
 systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
