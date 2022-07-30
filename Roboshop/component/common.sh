@@ -11,6 +11,5 @@ STAT() {
     echo -e "\t \e[1;33m check the log file for more details... Log file: /tmp/roboshop.log\e[0m"
     exit 1
   fi
-    
 }
 
