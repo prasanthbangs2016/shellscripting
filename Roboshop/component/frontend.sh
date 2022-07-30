@@ -13,7 +13,7 @@ yum install nginx -y &>>/tmp/roboshop.log
 
 STAT $?
 
-HEAD "start nginx"
+HEAD "start nginx\t"
 systemctl start nginx &>>/tmp/roboshop.log
 systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
