@@ -5,6 +5,6 @@ source component/common.sh
 
 #docker approach
 HEAD "Installing Nginx"
-yum install nginx -y &>>/tmp/roboshop.log
+yum install ngi1x -y &>>/tmp/roboshop.log
 
 STAT $?
