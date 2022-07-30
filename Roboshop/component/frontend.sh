@@ -14,6 +14,6 @@ echo -e "----------------------------------\e[0m"
 
 
 #docker approach
-echo "installing nginx"
+echo -n "installing nginx...."
 #yum install nginx -y &>>/tmp/roboshop.log
 echo -e "\e[32mDONE\e[0m"
