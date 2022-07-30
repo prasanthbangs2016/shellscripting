@@ -18,7 +18,7 @@ HEAD "Install Mongo\t\t"
 yum install -y mongodb-org &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "start Mongo service\t\t"
+HEAD "start Mongo service\t"
 systemctl enable mongod
 systemctl start mongod
 STAT $?
