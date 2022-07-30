@@ -17,3 +17,15 @@ HEAD "start nginx\t"
 systemctl start nginx &>>/tmp/roboshop.log
 systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
+
+HEAD "Downloading frontend application code\t"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Delete nginx default html files\t"
+rm -rf /usr/share/nginx/html/*
+STAT $?
+
+HEAD "Extract frontend applicatio code\t"
+unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>/tmp/roboshop.log
+STAT $?
