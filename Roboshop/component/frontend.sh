@@ -6,7 +6,7 @@ source component/common.sh
 rm -rf /tmp/roboshop.log
 
 #docker approach
-HEAD "Installing Nginx\t\t\t\t"
+HEAD "Installing Nginx\t\t\t"
 yum install nginx -y &>>/tmp/roboshop.log
 #script will fail if run as below
 #yum install Nginx -y &>>/tmp/roboshop.log
