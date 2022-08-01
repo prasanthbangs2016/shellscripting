@@ -27,15 +27,6 @@ STAT $?
 HEAD "Extract the catalogue code"
 cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 
-<<##
-if [ -d "/home/roboshop/catalogue" ]; then
-  echo "path is already exists /home/roboshop/catalogue,so skipping the move" &>>/tmp/roboshop.log
-  STAT $?
-else
-  cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
-  STAT $?
-fi
-##
 STAT $?
 
 HEAD "Install nodejs dependencies"
