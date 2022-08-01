@@ -33,6 +33,7 @@ STAT $?
 
 HEAD "extract download archive\t"
 cd /tmp
+#- o : overwrite
 unzip -o mongodb.zip &>>/tmp/roboshop.log
 STAT $?
 
