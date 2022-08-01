@@ -12,6 +12,15 @@ fi
 LID=lt-0b86176ba30da7a45
 version=1
 
+#validate instance state and if it is already exist and running it wont create instance,it will create instance only when it is not available.
+INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=Frontend" | jq .Reservations[].Instances[].State.Name | xargs -n1)
+if [ "$(INSTANCE_STATE)" = "running"]; then
+  echo "Frontend Instance is already running and exist"
+  exit 0
+fi
+
 #single quote wont for work variable hence we added double quotes
 aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
+
+
 
