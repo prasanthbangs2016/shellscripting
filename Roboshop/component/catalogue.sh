@@ -31,6 +31,7 @@ if [ -d "/home/roboshop/catalogue" ]; then
   STAT $?
 else
   su - roboshop
+  sudo yum install nodejs -y &>>/tmp/roboshop.log
   cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
   STAT $?
 fi
