@@ -36,7 +36,7 @@ cd /tmp
 unzip -o mongodb.zip &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Load schema\t\t"
+HEAD "Load schema\t\t\t"
 cd mongodb-main
 mongo < catalogue.js  &>>/tmp/roboshop && mongo < users.js &>>/tmp/roboshop.log
 STAT $?
