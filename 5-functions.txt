@@ -1,0 +1,98 @@
+function
+	if you assign a name to set of commands then that is function.
+	functions are also used to group the commands logically.
+	functions are used for reusability.
+
+examples:
+--------
+
+#!/bin/bash
+
+#declare a function
+
+SAMPLE() {
+ echo  Welcome to sample function
+
+}
+
+#access the function
+SAMPLE
+
+example2# variable with function
+----------	
+#!/bin/bash
+
+#declare a function
+
+SAMPLE() {
+ echo  Welcome to sample function
+ echo value of a = $a
+ b=20
+
+}
+
+#access the function
+a=10
+SAMPLE
+echo value of b= $b
+
+example3# variable with function
+----------	
+#!/bin/bash
+
+#declare a function
+
+SAMPLE() {
+ echo  Welcome to sample function
+ echo value of a = $a
+ b=20
+
+}
+
+#access the function
+a=10
+SAMPLE
+echo value of b= $b
+
+#access the function
+a=10
+SAMPLE $1
+echo value of b= $b
+
+execution: example.sh PRASHANTH
+
+
+example4# variable with function
+----------	
+#!/bin/bash
+
+#declare a function
+
+SAMPLE() {
+ echo  Welcome to sample function
+ return 5
+ echo value of a = $a
+ b=20
+
+}
+
+#access the function
+a=10
+SAMPLE
+echo value of b= $b
+
+#access the function
+a=10
+SAMPLE $1
+echo value of b= $b
+
+execution: example.sh PRASHANTH
+
+note: exit status and return statements are same, post return or exit statements wont be executed.
+
+
+
+
+
+
+

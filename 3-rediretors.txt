@@ -1,0 +1,57 @@
+Input rediretors:
+	Instead of taking input from user,we want to send from file then we use input redirector.
+<
+
+Example
+----------
+# mongo < catalogue.js
+# mongo < users.js 
+
+
+
+Output redirectors:
+	Instead dispalying the output to the screen,we want to send it to output file then we use output redirector.
+  > 
+
+
+Example:
+-----------
+ls >/tmp/out
+cat /tmp/out
+
+
+
+STDOUT
+(1>)(>) --only output
+
+ls -ld /boot /boot1
+
+ls -ld /boot /boot1 >/tmp/out
+
+or
+
+ls -ld /boot /boot1 1>/tmp/out
+
+
+
+STDERR
+(2>) --only error
+
+ls -ld /boot /boot1 2>/tmp/error
+
+
+STDOUT & STDERR (&>) ---Both output and error will be redirected to the same file.
+
+ls -ld /boot /boot1 1>/tmp/out 2>/tmp/error
+
+both going to same file
+
+ls -ld /boot /boot1 &>/tmp/out
+
+least both about output and error
+
+ls -ld /boot /boot1 &>/dev/null
+
+
+
+  
