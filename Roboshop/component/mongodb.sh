@@ -19,7 +19,7 @@ yum install -y mongodb-org &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "update mongodb config"
-sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>/tmp/roboshop
 STAT $?
 
 HEAD "start Mongo service\t"
