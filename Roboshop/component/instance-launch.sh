@@ -12,6 +12,6 @@ fi
 LID=lt-0b86176ba30da7a45
 version=1
 
-
+#single quote wont for work variable hence we added double quotes
 aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 
