@@ -7,7 +7,8 @@ rm -rf /tmp/roboshop.log
 
 #docker approach
 HEAD "Installing nodejs\t\t\t"
-yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+curl -L https://npmjs.org/install.sh | sudo sh &>>/tmp/roboshop.log
+yum make gcc-c++ -y &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Adding Roboshop app user"
@@ -34,5 +35,5 @@ cd /home/roboshop/catalogue && npm install --unsafe-perm -g now &>>/tmp/roboshop
 STAT $?
 
 HEAD "Fix Permissions to app content"
-chown roboshop:roboshop /home/roboshop -Repository
+chown roboshop:roboshop /home/roboshop -R
 STAT $?
