@@ -7,7 +7,7 @@ if [ -z "$instance_id" ]; then
   exit 1
 fi
 
-start_instance=INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance_id}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
+start_instance=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance_id}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
 if [ "${start_instance}" = "running" ]; then
   echo "Instance is already running"
