@@ -20,7 +20,7 @@ if [ "${INSTANCE_STATE}" = "stopped" ]; then
 fi
 
 #start instance
-aws ec2 start-instances --instance-ids ${instance_id}
+aws ec2 stop-instances --instance-ids ${instance_id}
 
 
 
