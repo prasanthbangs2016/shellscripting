@@ -27,9 +27,10 @@ STAT $?
 HEAD "Extract the catalogue code"
 
 if [ -d "/home/roboshop/catalogue" ]; then
-  echo "path is already exists /home/roboshop/catalogue"
+  echo "path is already exists /home/roboshop/catalogue,so skipping the move" &>>/tmp/roboshop.log
   STAT $?
 else
+  su - roboshop
   cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
   STAT $?
 fi
