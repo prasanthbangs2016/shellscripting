@@ -18,7 +18,7 @@ else
   STAT $?
 fi
 
-HEAD "Adding Roboshop app user"
+HEAD "Adding Roboshop app user\t\t"
 id roboshop &>>/tmp/roboshop.log
 if [ $? -eq 0 ]; then
   echo "User is already there,so skipping the user creation" &>>/tmp/roboshop.log
@@ -28,19 +28,19 @@ else
   STAT $?
 fi
 
-HEAD "Download catalogue code from github"
+HEAD "Download catalogue code from github\t"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Extract the catalogue code"
+HEAD "Extract the catalogue code\t\t"
 cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 
 STAT $?
 
-HEAD "Install nodejs dependencies"
+HEAD "Install nodejs dependencies\t\t"
 cd /home/roboshop/catalogue && npm install --unsafe-perm -g now &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Fix Permissions to app content"
+HEAD "Fix Permissions to app content\t"
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
