@@ -25,8 +25,14 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 STAT $?
 
 HEAD "Extract the catalogue code"
-cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
-STAT $?
+
+if [ -d "/home/roboshop/catalogue" ]; then
+  echo "path is already exists /home/roboshop/catalogue"
+  STAT $?
+else
+  cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
+  STAT $?
+fi
 
 HEAD "Install nodejs dependencies"
 cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
