@@ -12,5 +12,6 @@ fi
 LID=lt-0b86176ba30da7a45
 version=1
 
-aws ec2 run-instances --launch-template LaunchTemplateId=${LID}a45,Version=${version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=fron${COMPONENT}}]"
+
+aws ec2 run-instances --launch-template LaunchTemplateId=${LID}a45,Version=${version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=fron${COMPONENT}}]" | jq
 
