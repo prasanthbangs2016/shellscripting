@@ -25,18 +25,23 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 STAT $?
 
 HEAD "Extract the catalogue code"
+cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 
+<<##
 if [ -d "/home/roboshop/catalogue" ]; then
   echo "path is already exists /home/roboshop/catalogue,so skipping the move" &>>/tmp/roboshop.log
   STAT $?
 else
-  su - roboshop
-  sudo yum install nodejs -y &>>/tmp/roboshop.log
-  cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
+  cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
   STAT $?
 fi
-
-HEAD "Install nodejs dependencies"
-cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
+##
 STAT $?
 
+HEAD "Install nodejs dependencies"
+cd /home/roboshop/catalogue && npm install --unsafe-perm -g now &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Fix Permissions to app content"
+chown roboshop:roboshop /home/roboshop -Repository
+STAT $?
