@@ -8,8 +8,8 @@ rm -rf /tmp/roboshop.log
 #docker approach
 HEAD "Installing nodejs\t\t\t"
 yum make gcc-c++ -y &>>/tmp/roboshop.log
-node --version
-npm --version
+node --version &>>/tmp/roboshop.log
+npm --version &>>/tmp/roboshop.log
 if [ $? -eq 0 ]; then
   echo "Nodejs already installed hence skipping" &>>/tmp/roboshop.log
   STAT $?
