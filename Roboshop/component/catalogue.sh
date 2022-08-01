@@ -7,9 +7,16 @@ rm -rf /tmp/roboshop.log
 
 #docker approach
 HEAD "Installing nodejs\t\t\t"
-curl -L https://npmjs.org/install.sh | sudo sh &>>/tmp/roboshop.log
 yum make gcc-c++ -y &>>/tmp/roboshop.log
-STAT $?
+node --version
+npm --version
+if [ $? -eq 0 ]; then
+  echo "Nodejs already installed hence skipping" &>>/tmp/roboshop.log
+  STAT $?
+else
+  curl -L https://npmjs.org/install.sh | sudo sh &>>/tmp/roboshop.log
+  STAT $?
+fi
 
 HEAD "Adding Roboshop app user"
 id roboshop &>>/tmp/roboshop.log
