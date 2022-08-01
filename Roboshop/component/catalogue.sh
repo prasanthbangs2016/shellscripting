@@ -1,3 +1,29 @@
 #bin/bash
+#gold colour
 
-echo Installing catalogue
+source component/common.sh
+#removing log for every run to have latest run log
+rm -rf /tmp/roboshop.log
+
+#docker approach
+HEAD "Installing nodejs\t\t\t"
+yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Adding Roboshop app user"
+useradd roboshop &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Download catalogue code from github"
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Extract the catalogue code"
+cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
+STAT $?
+
+HEAD "Install nodejs dependencies"
+cd /home/roboshop/catalogue
+npm install &>>/tmp/roboshop.log
+STAT $?
+
