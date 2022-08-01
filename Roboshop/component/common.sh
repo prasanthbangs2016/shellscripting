@@ -9,7 +9,7 @@ STAT() {
   else
     echo -e "\e[1;31m fail\e[0m"
     echo -e "\t \e[1;33m check the log file for more details... Log file: /tmp/roboshop.log\e[0m"
-    exit 1 #if something it will stop here
+    exit 1 #if something fail it will stop here
   fi
 }
 
