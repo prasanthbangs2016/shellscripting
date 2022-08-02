@@ -38,7 +38,8 @@ cd /home/roboshop && rm -rf catalogue && unzip /tmp/catalogue.zip &>>/tmp/robosh
 STAT $?
 
 HEAD "Install nodejs dependencies\t\t"
-cd /home/roboshop/catalogue && npm install --unsafe-perm -g now &>>/tmp/roboshop.log
+cd /home/roboshop/catalogue 
+npm install &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Fix Permissions to app content\t\t"
@@ -52,3 +53,4 @@ STAT $?
 HEAD "start catalogue service\t\t"
 systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl restart catalogue &>>/tmp/roboshop.log
 STAT $?
+
