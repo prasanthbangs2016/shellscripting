@@ -45,10 +45,7 @@ HEAD "Fix Permissions to app content\t\t"
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
 
-#echo "NOTE: We need to update the IP address of MONGODB Server in systemd.service fil create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
-#echo "create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
-
-HEAD "Update DNS record in systemd file\t\"
+HEAD "Update DNS record in systemd file\t"
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
 STAT $?
 
