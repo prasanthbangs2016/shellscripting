@@ -44,3 +44,21 @@ STAT $?
 HEAD "Fix Permissions to app content\t\t"
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
+
+<<##
+NOTE: We need to update the IP address of MONGODB Server in systemd.service fil
+create route53 private zone with privateip and update it
+##
+
+HEAD "Update DNS record in systemd file\t\"
+sed -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+STAT $?
+
+HEAD "setup the systemd service\t\t\"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+STAT $?
+
+HEAD "start catalogue service\t\t"
+systemctl daemon-reload && systemctl enable catalogue && systemctl start catalogue &>>/tmp/roboshop.log
+STAT $?
+
