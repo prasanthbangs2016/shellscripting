@@ -7,8 +7,7 @@ rm -rf /tmp/roboshop.log
 
 #docker approach
 HEAD "Installing nodejs\t\t\t"
-curl -L https://npmjs.org/install.sh | sudo sh &>>/tmp/roboshop.log
-yum make gcc-c++ -y &>>/tmp/roboshop.log
+yum nodejs make gcc-c++ -y &>>/tmp/roboshop.log
 #node --version &>>/tmp/roboshop.log
 #npm --version &>>/tmp/roboshop.log
 STAT $?
