@@ -9,8 +9,8 @@ rm -rf /tmp/roboshop.log
 HEAD "Installing nodejs\t\t\t"
 curl -L https://npmjs.org/install.sh | sudo sh &>>/tmp/roboshop.log
 yum make gcc-c++ -y &>>/tmp/roboshop.log
-node --version &>>/tmp/roboshop.log
-npm --version &>>/tmp/roboshop.log
+#node --version &>>/tmp/roboshop.log
+#npm --version &>>/tmp/roboshop.log
 STAT $?
 #if [ $? -eq 0 ]; then
   #echo "Nodejs already installed hence skipping" &>>/tmp/roboshop.log
