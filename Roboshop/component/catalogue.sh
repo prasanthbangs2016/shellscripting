@@ -45,14 +45,10 @@ HEAD "Fix Permissions to app content\t\t"
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
 
-HEAD "Update DNS record in systemd file\t"
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
-STAT $?
-
-HEAD "setup the systemd service\t\t\"
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+HEAD "setup the systemd service\t\t\t"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log && mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 STAT $?
 
 HEAD "start catalogue service\t\t"
-systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl start catalogue &>>/tmp/roboshop.log
+systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl restart catalogue &>>/tmp/roboshop.log
 STAT $?
