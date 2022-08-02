@@ -49,7 +49,7 @@ STAT $?
 #echo "create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
 
 HEAD "Update DNS record in systemd file\t\"
-sed -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+sed -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "setup the systemd service\t\t\"
