@@ -7,7 +7,7 @@ rm -rf /tmp/roboshop.log
 
 #docker approach
 HEAD "Installing nodejs\t\t\t"
-yum nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
 #node --version &>>/tmp/roboshop.log
 #npm --version &>>/tmp/roboshop.log
 STAT $?
