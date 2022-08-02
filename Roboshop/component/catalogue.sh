@@ -46,8 +46,8 @@ chown roboshop:roboshop /home/roboshop -R
 STAT $?
 
 HEAD "Update DNS record in systemd file\t\"
-echo "NOTE: We need to update the IP address of MONGODB Server in systemd.service fil create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
-echo "create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
+#echo "NOTE: We need to update the IP address of MONGODB Server in systemd.service fil create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
+#echo "create route53 private zone with privateip and update it" &>>/tmp/roboshop.log
 sed -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
 STAT $?
 
